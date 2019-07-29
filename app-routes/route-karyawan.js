@@ -59,8 +59,8 @@ app.use(cors());
         });
     });
 
-    app.delete('/api-karyawan/hapus-karyawan', function (req, res) {  
-        let nip = req.body.nip;
+    app.delete('/api-karyawan/hapus-karyawan/:id', function (req, res) {  
+        let nip = req.params.id;
         database.query('DELETE FROM tbl_karyawan WHERE nip = ?', [nip], function (error, results) {
         if (error) throw error;
         return res.send({ 
